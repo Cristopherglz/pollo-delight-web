@@ -156,7 +156,7 @@ export function PartidosMundialScreen({ onBack, onSelectPartido }: PartidosMundi
                 <span>Ya pronosticaste</span>
               </div>
             ) : partido.estado === 'programado' ? (
-              <Button size="sm" className="bg-pollo-amarillo hover:bg-pollo-amarillo text-pollo-marron text-xs">
+              <Button size="sm" className="bg-pollo-amarillo hover:bg-pollo-amarillo text-pollo-marron text-xs shadow-md">
                 Predecir
               </Button>
             ) : null}
