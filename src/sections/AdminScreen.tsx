@@ -139,7 +139,7 @@ export function AdminScreen({ onBack, onSelectSorteo, onCrearSorteo, onVerGanado
           </div>
 
           {/* Toggle para habilitar/deshabilitar predicciones */}
-          <div className="mb-4 p-4 bg-white/10 backdrop-blur-sm rounded-xl shadow-md">
+          <div className="mb-4 p-4 backdrop-blur-sm rounded-xl shadow-md bg-white">
             <div className="flex items-center justify-between">
               <div>
                 <p className="font-bold text-primary-foreground">Sección de Predicciones</p>
