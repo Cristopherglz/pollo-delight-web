@@ -410,7 +410,7 @@ export function CrearSorteoScreen({ onBack, sorteoEditar }: CrearSorteoScreenPro
                 onClick={handleAgregarRequisito}
                 className="px-4 py-3 bg-pollo-amarillo text-white rounded-xl font-semibold hover:bg-pollo-amarillo/90 transition-colors"
               >
-                <Plus className="w-5 h-5" />
+                <Plus className="w-5 h-5 text-primary-foreground" />
               </button>
             </div>
           </div>
