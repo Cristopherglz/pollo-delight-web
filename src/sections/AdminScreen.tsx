@@ -117,24 +117,24 @@ export function AdminScreen({ onBack, onSelectSorteo, onCrearSorteo, onVerGanado
         </div>
 
         {/* Mundial 2026 - Stats */}
-        <div className="bg-pollo-marron rounded-2xl p-5">
+        <div className="rounded-2xl p-5 bg-sky-200">
           <div className="flex items-center gap-2 mb-4">
-            <Globe className="w-5 h-5 text-pollo-amarillo" />
-            <h2 className="text-lg font-bold text-pollo-amarillo">Mundial 2026</h2>
+            <Globe className="w-5 h-5 text-primary-foreground" />
+            <h2 className="text-lg font-bold text-primary-foreground">Mundial 2026</h2>
           </div>
           
           <div className="grid grid-cols-3 gap-3 mb-4">
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center">
-              <p className="text-xl font-black text-pollo-amarillo">{stats.totalPartidos}</p>
-              <p className="text-xs text-pollo-amarillo/60">Partidos</p>
+            <div className="backdrop-blur-sm rounded-xl p-3 text-center bg-white">
+              <p className="text-xl font-black text-primary-foreground">{stats.totalPartidos}</p>
+              <p className="text-xs text-primary-foreground">Partidos</p>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center">
-              <p className="text-xl font-black text-pollo-amarillo">{stats.totalPredicciones}</p>
-              <p className="text-xs text-pollo-amarillo/60">Predicciones</p>
+            <div className="backdrop-blur-sm rounded-xl p-3 text-center bg-white">
+              <p className="text-xl font-black text-primary-foreground">{stats.totalPredicciones}</p>
+              <p className="text-xs text-primary-foreground">Predicciones</p>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center">
-              <p className="text-xl font-black text-pollo-amarillo">{stats.partidosFinalizados}</p>
-              <p className="text-xs text-pollo-amarillo/60">Finalizados</p>
+            <div className="backdrop-blur-sm rounded-xl p-3 text-center bg-white">
+              <p className="text-xl font-black text-primary-foreground">{stats.partidosFinalizados}</p>
+              <p className="text-xs text-primary-foreground">Finalizados</p>
             </div>
           </div>
 
@@ -142,8 +142,8 @@ export function AdminScreen({ onBack, onSelectSorteo, onCrearSorteo, onVerGanado
           <div className="mb-4 p-4 bg-white/10 backdrop-blur-sm rounded-xl">
             <div className="flex items-center justify-between">
               <div>
-                <p className="font-bold text-pollo-amarillo">Sección de Predicciones</p>
-                <p className="text-xs text-pollo-amarillo/60">
+                <p className="font-bold text-primary-foreground">Sección de Predicciones</p>
+                <p className="text-xs text-primary-foreground">
                   {prediccionesHabilitadas 
                     ? 'Los usuarios pueden predecir resultados' 
                     : 'La app funciona como sorteos normales'}
@@ -160,7 +160,7 @@ export function AdminScreen({ onBack, onSelectSorteo, onCrearSorteo, onVerGanado
                 className="flex items-center gap-2"
               >
                 {prediccionesHabilitadas ? (
-                  <ToggleRight className="w-12 h-8 text-pollo-amarillo" />
+                  <ToggleRight className="w-12 h-8 text-sky-400" />
                 ) : (
                   <ToggleLeft className="w-12 h-8 text-pollo-amarillo/50" />
                 )}
@@ -171,7 +171,7 @@ export function AdminScreen({ onBack, onSelectSorteo, onCrearSorteo, onVerGanado
           {prediccionesHabilitadas && onVerPartidos && (
             <button
               onClick={onVerPartidos}
-              className="w-full py-3 bg-pollo-amarillo hover:bg-pollo-amarillo text-pollo-marron font-bold rounded-xl transition-colors flex items-center justify-center gap-2"
+              className="w-full py-3 text-pollo-marron font-bold rounded-xl transition-colors flex items-center justify-center gap-2 bg-gray-50"
             >
               <Target className="w-4 h-4 text-pollo-marron" />
               Gestionar Partidos
