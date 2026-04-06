@@ -162,7 +162,7 @@ export function AdminScreen({ onBack, onSelectSorteo, onCrearSorteo, onVerGanado
                 {prediccionesHabilitadas ? (
                   <ToggleRight className="w-12 h-8 text-sky-400" />
                 ) : (
-                  <ToggleLeft className="w-12 h-8 text-pollo-amarillo/50" />
+                  <ToggleLeft className="w-12 h-8 text-sky-700" />
                 )}
               </button>
             </div>
