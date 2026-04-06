@@ -14,7 +14,7 @@ export function RegisterScreen({ onBack, onSuccess, onLogin }: RegisterScreenPro
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-  
+  const [showDatePicker, setShowDatePicker] = useState(false);
   const [formData, setFormData] = useState({
     nombre: '',
     apellido: '',
@@ -253,13 +253,26 @@ export function RegisterScreen({ onBack, onSuccess, onLogin }: RegisterScreenPro
                 </label>
                 <div className="input-with-icon">
                   <Calendar className="input-icon w-5 h-5" strokeWidth={2} />
-                  <input
-                    type="date"
-                    value={formData.fechaNacimiento}
-                    onChange={(e) => updateField('fechaNacimiento', e.target.value)}
-                    className="input-pollo"
-                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowDatePicker(true)}
+                    className="input-pollo text-left w-full"
+                  >
+                    {formData.fechaNacimiento
+                      ? new Date(formData.fechaNacimiento + 'T00:00:00').toLocaleDateString('es-AR', { day: 'numeric', month: 'long', year: 'numeric' })
+                      : <span className="text-pollo-marron/40">Seleccionar fecha</span>}
+                  </button>
                 </div>
+                {showDatePicker && (
+                  <DateWheelPicker
+                    value={formData.fechaNacimiento}
+                    onCancel={() => setShowDatePicker(false)}
+                    onConfirm={(date) => {
+                      updateField('fechaNacimiento', date);
+                      setShowDatePicker(false);
+                    }}
+                  />
+                )}
               </div>
 
               <div className="space-y-2">
