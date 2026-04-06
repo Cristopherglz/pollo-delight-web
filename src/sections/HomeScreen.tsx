@@ -87,9 +87,9 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
         {prediccionesHabilitadas && (
           <div 
             onClick={() => onNavigate('partidos-mundial')}
-            className="relative overflow-hidden rounded-2xl cursor-pointer group bg-pollo-azul-claro border border-pollo-azul/30"
+            className="relative overflow-hidden rounded-2xl cursor-pointer group bg-pollo-azul-claro border border-pollo-azul/30 shadow-md"
           >
-            <div className="relative p-5">
+            <div className="relative p-5 shadow-md">
               <div className="flex items-start justify-between">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-2">
@@ -103,7 +103,7 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
                     Predecí los resultados y ganá <strong>3x chances</strong> si acertás
                   </p>
                   <div className="flex items-center gap-2">
-                    <span className="bg-pollo-azul text-white text-xs font-bold px-3 py-1.5 rounded-full">
+                    <span className="bg-pollo-azul text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md">
                       Predecir Ahora
                     </span>
                     <ChevronRight className="w-4 h-4 text-pollo-marron/60" />
