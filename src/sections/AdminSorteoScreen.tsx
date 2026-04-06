@@ -468,8 +468,8 @@ export function AdminSorteoScreen({ sorteo, onBack, onEditarSorteo }: AdminSorte
           <>
             {/* Results */}
             <div className="text-center mb-6">
-              <div className="w-20 h-20 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce-soft shadow-xl">
-                <PartyPopper className="w-10 h-10 text-white" />
+              <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce-soft shadow-xl bg-primary text-primary-foreground">
+                <PartyPopper className="w-10 h-10 text-primary-foreground" />
               </div>
               <h2 className="text-2xl font-black text-pollo-marron">¡Ganadores!</h2>
               <p className="text-pollo-marron/60">Sorteo realizado exitosamente</p>
@@ -488,7 +488,7 @@ export function AdminSorteoScreen({ sorteo, onBack, onEditarSorteo }: AdminSorte
                 <div>
                   <p className={`font-bold ${ganadoresNotificados === sorteoGanadores.length ? 'text-green-700' : 'text-yellow-700'}`}>
                     {ganadoresNotificados === sorteoGanadores.length 
-                      ? 'Todos los ganadores fueron contactados' 
+                      ? 'Todos los ganadores fueron notificados ' 
                       : `Contactados: ${ganadoresNotificados} de ${sorteoGanadores.length}`}
                   </p>
                   <p className={`text-sm ${ganadoresNotificados === sorteoGanadores.length ? 'text-green-600' : 'text-yellow-600'}`}>
