@@ -200,7 +200,7 @@ export function PerfilScreen({ onBack, onLogout }: PerfilScreenProps) {
             {!isEditing ? (
               <button 
                 onClick={() => setIsEditing(true)}
-                className="flex items-center gap-1 text-sm text-pollo-marron font-semibold bg-pollo-amarillo/20 px-3 py-2 rounded-xl"
+                className="flex items-center gap-1 text-sm text-pollo-marron font-semibold bg-pollo-amarillo/20 px-3 py-2 rounded-xl shadow-md"
               >
                 <Edit2 className="w-4 h-4" />
                 Editar
@@ -351,7 +351,7 @@ export function PerfilScreen({ onBack, onLogout }: PerfilScreenProps) {
         {/* Cambiar contraseña */}
         <button
           onClick={() => setShowPasswordModal(true)}
-          className="w-full flex items-center justify-center gap-2 p-4 bg-pollo-amarillo/10 border border-pollo-amarillo/30 rounded-2xl text-pollo-marron font-semibold hover:bg-pollo-amarillo/20 transition-colors"
+          className="w-full flex items-center justify-center gap-2 p-4 bg-pollo-amarillo/10 border border-pollo-amarillo/30 rounded-2xl text-pollo-marron font-semibold hover:bg-pollo-amarillo/20 transition-colors shadow-md"
         >
           <Edit2 className="w-5 h-5" />
           Cambiar Contraseña
@@ -360,7 +360,7 @@ export function PerfilScreen({ onBack, onLogout }: PerfilScreenProps) {
         {/* Cerrar sesión */}
         <button
           onClick={() => setShowLogoutConfirm(true)}
-          className="w-full flex items-center justify-center gap-2 p-4 bg-red-50 border border-red-200 rounded-2xl text-red-600 font-semibold hover:bg-red-100 transition-colors"
+          className="w-full flex items-center justify-center gap-2 p-4 bg-red-50 border border-red-200 rounded-2xl text-red-600 font-semibold hover:bg-red-100 transition-colors shadow-md"
         >
           <LogOut className="w-5 h-5" />
           Cerrar Sesión
