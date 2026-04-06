@@ -383,7 +383,7 @@ export function PerfilScreen({ onBack, onLogout }: PerfilScreenProps) {
             <div className="flex gap-3">
               <button
                 onClick={() => setShowLogoutConfirm(false)}
-                className="flex-1 py-3 rounded-xl font-semibold text-pollo-marron border-2 border-pollo-amarillo/30"
+                className="flex-1 py-3 rounded-xl font-semibold text-pollo-marron border-2 border-destructive"
               >
                 Cancelar
               </button>
