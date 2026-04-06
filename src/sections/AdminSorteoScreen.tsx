@@ -488,7 +488,7 @@ export function AdminSorteoScreen({ sorteo, onBack, onEditarSorteo }: AdminSorte
                 <div>
                   <p className={`font-bold ${ganadoresNotificados === sorteoGanadores.length ? 'text-green-700' : 'text-yellow-700'}`}>
                     {ganadoresNotificados === sorteoGanadores.length 
-                      ? 'Todos los ganadores fueron contactados' 
+                      ? 'Todos los ganadores fueron notificados ' 
                       : `Contactados: ${ganadoresNotificados} de ${sorteoGanadores.length}`}
                   </p>
                   <p className={`text-sm ${ganadoresNotificados === sorteoGanadores.length ? 'text-green-600' : 'text-yellow-600'}`}>
