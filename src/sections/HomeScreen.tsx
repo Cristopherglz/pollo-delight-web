@@ -43,7 +43,7 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
             </div>
             <button 
               onClick={() => onNavigate('notificaciones')}
-              className="relative w-12 h-12 bg-pollo-fondo-claro/30 backdrop-blur-sm rounded-full flex items-center justify-center"
+              className="relative w-12 h-12 bg-pollo-fondo-claro/30 backdrop-blur-sm rounded-full flex items-center justify-center shadow-md"
             >
               <Bell className="w-5 h-5 text-white" />
               {notificacionesNoLeidas.length > 0 && (
@@ -56,21 +56,21 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
 
           {/* Stats */}
           <div className="flex gap-3">
-            <div className="flex-1 bg-pollo-fondo-claro/30 backdrop-blur-sm rounded-2xl p-3">
+            <div className="flex-1 bg-pollo-fondo-claro/30 backdrop-blur-sm rounded-2xl p-3 shadow-md">
               <div className="flex items-center gap-1 mb-1">
                 <Ticket className="w-3 h-3 text-white/80" />
                 <span className="text-white/80 text-xs">Participaciones</span>
               </div>
               <p className="text-xl font-black text-white">{misParticipaciones.length}</p>
             </div>
-            <div className="flex-1 bg-pollo-fondo-claro/30 backdrop-blur-sm rounded-2xl p-3">
+            <div className="flex-1 bg-pollo-fondo-claro/30 backdrop-blur-sm rounded-2xl p-3 shadow-md">
               <div className="flex items-center gap-1 mb-1">
                 <Target className="w-3 h-3 text-white/80" />
                 <span className="text-white/80 text-xs">Predicciones</span>
               </div>
               <p className="text-xl font-black text-white">{misPredicciones.length}</p>
             </div>
-            <div className="flex-1 bg-pollo-fondo-claro/30 backdrop-blur-sm rounded-2xl p-3">
+            <div className="flex-1 bg-pollo-fondo-claro/30 backdrop-blur-sm rounded-2xl p-3 shadow-md">
               <div className="flex items-center gap-1 mb-1">
                 <TrendingUp className="w-3 h-3 text-white/80" />
                 <span className="text-white/80 text-xs">Acertadas</span>
