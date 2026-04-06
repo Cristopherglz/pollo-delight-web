@@ -190,7 +190,7 @@ export function PartidosMundialScreen({ onBack, onSelectPartido }: PartidosMundi
       </div>
 
       {/* Info Banner */}
-      <div className="mx-4 mt-4 p-4 bg-pollo-azul rounded-xl">
+      <div className="mx-4 mt-4 p-4 bg-pollo-azul rounded-xl shadow-md">
         <div className="flex items-start gap-3">
           <div className="bg-white/20 p-2 rounded-lg">
             <TrendingUp className="w-6 h-6 text-white" />
