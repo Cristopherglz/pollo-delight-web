@@ -94,7 +94,7 @@ export function EstadisticasScreen({ onBack }: EstadisticasScreenProps) {
             
             <div className="bg-pollo-fondo-claro/80 backdrop-blur-sm rounded-2xl p-4 border border-pollo-marron/20">
               <div className="flex items-center gap-2 mb-2">
-                <Trophy className="w-4 h-4 text-green-500" />
+                <Trophy className="w-4 h-4 text-primary-foreground" />
                 <span className="text-xs text-pollo-marron/60">Finalizados</span>
               </div>
               <p className="text-2xl font-black text-pollo-marron">{statsGenerales.sorteosFinalizados}</p>
