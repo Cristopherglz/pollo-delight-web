@@ -117,29 +117,29 @@ export function AdminScreen({ onBack, onSelectSorteo, onCrearSorteo, onVerGanado
         </div>
 
         {/* Mundial 2026 - Stats */}
-        <div className="rounded-2xl p-5 bg-sky-200">
+        <div className="rounded-2xl p-5 bg-sky-200 shadow-md">
           <div className="flex items-center gap-2 mb-4">
             <Globe className="w-5 h-5 text-primary-foreground" />
             <h2 className="text-lg font-bold text-primary-foreground">Mundial 2026</h2>
           </div>
           
           <div className="grid grid-cols-3 gap-3 mb-4">
-            <div className="backdrop-blur-sm rounded-xl p-3 text-center bg-white">
+            <div className="backdrop-blur-sm rounded-xl p-3 text-center bg-white shadow-md">
               <p className="text-xl font-black text-primary-foreground">{stats.totalPartidos}</p>
               <p className="text-xs text-primary-foreground">Partidos</p>
             </div>
-            <div className="backdrop-blur-sm rounded-xl p-3 text-center bg-white">
+            <div className="backdrop-blur-sm rounded-xl p-3 text-center bg-white shadow-md">
               <p className="text-xl font-black text-primary-foreground">{stats.totalPredicciones}</p>
               <p className="text-xs text-primary-foreground">Predicciones</p>
             </div>
-            <div className="backdrop-blur-sm rounded-xl p-3 text-center bg-white">
+            <div className="backdrop-blur-sm rounded-xl p-3 text-center bg-white shadow-md">
               <p className="text-xl font-black text-primary-foreground">{stats.partidosFinalizados}</p>
               <p className="text-xs text-primary-foreground">Finalizados</p>
             </div>
           </div>
 
           {/* Toggle para habilitar/deshabilitar predicciones */}
-          <div className="mb-4 p-4 bg-white/10 backdrop-blur-sm rounded-xl">
+          <div className="mb-4 p-4 bg-white/10 backdrop-blur-sm rounded-xl shadow-md">
             <div className="flex items-center justify-between">
               <div>
                 <p className="font-bold text-primary-foreground">Sección de Predicciones</p>
@@ -160,7 +160,7 @@ export function AdminScreen({ onBack, onSelectSorteo, onCrearSorteo, onVerGanado
                 className="flex items-center gap-2"
               >
                 {prediccionesHabilitadas ? (
-                  <ToggleRight className="w-12 h-8 text-sky-400" />
+                  <ToggleRight className="w-12 h-8 text-sky-400 shadow-none" />
                 ) : (
                   <ToggleLeft className="w-12 h-8 text-sky-700" />
                 )}
@@ -171,7 +171,7 @@ export function AdminScreen({ onBack, onSelectSorteo, onCrearSorteo, onVerGanado
           {prediccionesHabilitadas && onVerPartidos && (
             <button
               onClick={onVerPartidos}
-              className="w-full py-3 text-pollo-marron font-bold rounded-xl transition-colors flex items-center justify-center gap-2 bg-gray-50"
+              className="w-full py-3 text-pollo-marron font-bold rounded-xl transition-colors flex items-center justify-center gap-2 bg-gray-50 shadow-md"
             >
               <Target className="w-4 h-4 text-pollo-marron" />
               Gestionar Partidos
@@ -185,7 +185,7 @@ export function AdminScreen({ onBack, onSelectSorteo, onCrearSorteo, onVerGanado
           <div className="grid grid-cols-3 gap-3">
             <button
               onClick={onCrearSorteo}
-              className="p-4 bg-pollo-marron rounded-2xl text-white flex flex-col items-center gap-2 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+              className="p-4 bg-pollo-marron rounded-2xl text-white flex flex-col items-center gap-2 transition-all duration-300 hover:-translate-y-1 shadow-md"
             >
               <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
                 <Plus className="w-6 h-6 text-pollo-marron" />
@@ -195,7 +195,7 @@ export function AdminScreen({ onBack, onSelectSorteo, onCrearSorteo, onVerGanado
             
             <button
               onClick={onVerGanadores}
-              className="p-4 bg-pollo-marron rounded-2xl text-white flex flex-col items-center gap-2 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+              className="p-4 bg-pollo-marron rounded-2xl text-white flex flex-col items-center gap-2 transition-all duration-300 hover:-translate-y-1 shadow-md"
             >
               <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
                 <Trophy className="w-6 h-6 text-pollo-marron" />
@@ -205,7 +205,7 @@ export function AdminScreen({ onBack, onSelectSorteo, onCrearSorteo, onVerGanado
             
             <button
               onClick={onVerEstadisticas}
-              className="p-4 bg-pollo-marron rounded-2xl text-white flex flex-col items-center gap-2 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+              className="p-4 bg-pollo-marron rounded-2xl text-white flex flex-col items-center gap-2 transition-all duration-300 hover:-translate-y-1 shadow-md"
             >
               <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
                 <BarChart3 className="w-6 h-6 text-pollo-marron" />
