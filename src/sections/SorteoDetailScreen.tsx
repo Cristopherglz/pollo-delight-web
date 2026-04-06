@@ -245,7 +245,7 @@ export function SorteoDetailScreen({ sorteo, onBack, onIrAPartido }: SorteoDetai
                     </div>
                     <h3 className="font-bold text-pollo-marron mt-1">{premio.nombre}</h3>
                     <p className="text-sm text-pollo-marron/60">{premio.descripcion}</p>
-                    <p className="text-sm font-bold text-pollo-amarillo mt-1">{premio.valor}</p>
+                    <p className="text-sm font-bold mt-1 text-primary-foreground">{premio.valor}</p>
                   </div>
                 </div>
               </div>
