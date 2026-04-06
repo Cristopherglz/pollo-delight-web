@@ -171,7 +171,7 @@ export function AdminScreen({ onBack, onSelectSorteo, onCrearSorteo, onVerGanado
           {prediccionesHabilitadas && onVerPartidos && (
             <button
               onClick={onVerPartidos}
-              className="w-full py-3 text-pollo-marron font-bold rounded-xl transition-colors flex items-center justify-center gap-2 bg-gray-50 shadow-md"
+              className="w-full py-3 text-pollo-marron font-bold transition-colors flex items-center justify-center gap-2 bg-gray-50 shadow-md rounded-md"
             >
               <Target className="w-4 h-4 text-pollo-marron" />
               Gestionar Partidos
