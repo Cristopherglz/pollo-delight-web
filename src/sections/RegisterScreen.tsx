@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Eye, EyeOff, ArrowLeft, Mail, Lock, User, Phone, Calendar, MapPin, CreditCard, Check, Sparkles } from 'lucide-react';
+import { DateWheelPicker } from '@/components/DateWheelPicker';
 import { useStore } from '@/store';
 
 interface RegisterScreenProps {
