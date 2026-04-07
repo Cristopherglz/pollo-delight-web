@@ -105,7 +105,7 @@ export interface Ganador {
 // ==================== TIPOS PARA MUNDIAL 2026 ====================
 
 // Tipos de fase del mundial
-export type FaseMundial = 'fase-grupos' | 'octavos' | 'cuartos' | 'semifinales' | 'tercer-puesto' | 'final';
+export type FaseMundial = 'fase-grupos' | 'dieciseisavos' | 'octavos' | 'cuartos' | 'semifinales' | 'tercer-puesto' | 'final';
 
 // Tipos de estado del partido
 export type EstadoPartido = 'programado' | 'en-vivo' | 'finalizado' | 'cancelado';

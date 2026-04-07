@@ -17,6 +17,7 @@ const fasesOrden: FaseMundial[] = ['fase-grupos', 'octavos', 'cuartos', 'semifin
 
 const fasesLabels: Record<FaseMundial, string> = {
   'fase-grupos': 'Fase de Grupos',
+  'dieciseisavos': 'Dieciseisavos de Final',
   'octavos': 'Octavos de Final',
   'cuartos': 'Cuartos de Final',
   'semifinales': 'Semifinales',
