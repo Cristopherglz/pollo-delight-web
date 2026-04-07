@@ -13,7 +13,7 @@ interface PartidosMundialScreenProps {
   onSelectPartido: (partido: Partido) => void;
 }
 
-const fasesOrden: FaseMundial[] = ['fase-grupos', 'octavos', 'cuartos', 'semifinales', 'tercer-puesto', 'final'];
+const fasesOrden: FaseMundial[] = ['fase-grupos', 'dieciseisavos', 'octavos', 'cuartos', 'semifinales', 'tercer-puesto', 'final'];
 
 const fasesLabels: Record<FaseMundial, string> = {
   'fase-grupos': 'Fase de Grupos',
