@@ -31,50 +31,70 @@ const estadosPartido: { value: EstadoPartido; label: string }[] = [
   { value: 'cancelado', label: 'Cancelado' }
 ];
 
-const grupos = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+const grupos = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'];
 
 // Equipos predefinidos para el Mundial 2026
 const equiposPredefinidos: Equipo[] = [
   // Grupo A
-  { id: 'arg', nombre: 'Argentina', codigo: 'ARG', bandera: 'https://flagcdn.com/w160/ar.png', grupo: 'A' },
-  { id: 'per', nombre: 'Perú', codigo: 'PER', bandera: 'https://flagcdn.com/w160/pe.png', grupo: 'A' },
-  { id: 'chi', nombre: 'Chile', codigo: 'CHI', bandera: 'https://flagcdn.com/w160/cl.png', grupo: 'A' },
-  { id: 'can', nombre: 'Canadá', codigo: 'CAN', bandera: 'https://flagcdn.com/w160/ca.png', grupo: 'A' },
+  { id: 'mex', nombre: 'México', codigo: 'MEX', bandera: 'https://flagcdn.com/w160/mx.png', grupo: 'A' },
+  { id: 'rsa', nombre: 'Sudáfrica', codigo: 'RSA', bandera: 'https://flagcdn.com/w160/za.png', grupo: 'A' },
+  { id: 'kor', nombre: 'República de Corea', codigo: 'KOR', bandera: 'https://flagcdn.com/w160/kr.png', grupo: 'A' },
+  { id: 'cze', nombre: 'República Checa', codigo: 'CZE', bandera: 'https://flagcdn.com/w160/cz.png', grupo: 'A' },
   // Grupo B
-  { id: 'mex', nombre: 'México', codigo: 'MEX', bandera: 'https://flagcdn.com/w160/mx.png', grupo: 'B' },
-  { id: 'ecu', nombre: 'Ecuador', codigo: 'ECU', bandera: 'https://flagcdn.com/w160/ec.png', grupo: 'B' },
-  { id: 'ven', nombre: 'Venezuela', codigo: 'VEN', bandera: 'https://flagcdn.com/w160/ve.png', grupo: 'B' },
-  { id: 'jam', nombre: 'Jamaica', codigo: 'JAM', bandera: 'https://flagcdn.com/w160/jm.png', grupo: 'B' },
+  { id: 'can', nombre: 'Canadá', codigo: 'CAN', bandera: 'https://flagcdn.com/w160/ca.png', grupo: 'B' },
+  { id: 'bih', nombre: 'Bosnia y Herzegovina', codigo: 'BIH', bandera: 'https://flagcdn.com/w160/ba.png', grupo: 'B' },
+  { id: 'qat', nombre: 'Catar', codigo: 'QAT', bandera: 'https://flagcdn.com/w160/qa.png', grupo: 'B' },
+  { id: 'sui', nombre: 'Suiza', codigo: 'SUI', bandera: 'https://flagcdn.com/w160/ch.png', grupo: 'B' },
   // Grupo C
-  { id: 'usa', nombre: 'Estados Unidos', codigo: 'USA', bandera: 'https://flagcdn.com/w160/us.png', grupo: 'C' },
-  { id: 'uru', nombre: 'Uruguay', codigo: 'URU', bandera: 'https://flagcdn.com/w160/uy.png', grupo: 'C' },
-  { id: 'pan', nombre: 'Panamá', codigo: 'PAN', bandera: 'https://flagcdn.com/w160/pa.png', grupo: 'C' },
-  { id: 'bol', nombre: 'Bolivia', codigo: 'BOL', bandera: 'https://flagcdn.com/w160/bo.png', grupo: 'C' },
+  { id: 'bra', nombre: 'Brasil', codigo: 'BRA', bandera: 'https://flagcdn.com/w160/br.png', grupo: 'C' },
+  { id: 'mar', nombre: 'Marruecos', codigo: 'MAR', bandera: 'https://flagcdn.com/w160/ma.png', grupo: 'C' },
+  { id: 'hai', nombre: 'Haití', codigo: 'HAI', bandera: 'https://flagcdn.com/w160/ht.png', grupo: 'C' },
+  { id: 'sco', nombre: 'Escocia', codigo: 'SCO', bandera: 'https://flagcdn.com/w160/gb-sct.png', grupo: 'C' },
   // Grupo D
-  { id: 'bra', nombre: 'Brasil', codigo: 'BRA', bandera: 'https://flagcdn.com/w160/br.png', grupo: 'D' },
-  { id: 'col', nombre: 'Colombia', codigo: 'COL', bandera: 'https://flagcdn.com/w160/co.png', grupo: 'D' },
+  { id: 'usa', nombre: 'Estados Unidos', codigo: 'USA', bandera: 'https://flagcdn.com/w160/us.png', grupo: 'D' },
   { id: 'par', nombre: 'Paraguay', codigo: 'PAR', bandera: 'https://flagcdn.com/w160/py.png', grupo: 'D' },
-  { id: 'hon', nombre: 'Honduras', codigo: 'HON', bandera: 'https://flagcdn.com/w160/hn.png', grupo: 'D' },
+  { id: 'aus', nombre: 'Australia', codigo: 'AUS', bandera: 'https://flagcdn.com/w160/au.png', grupo: 'D' },
+  { id: 'tur', nombre: 'Turquía', codigo: 'TUR', bandera: 'https://flagcdn.com/w160/tr.png', grupo: 'D' },
   // Grupo E
-  { id: 'esp', nombre: 'España', codigo: 'ESP', bandera: 'https://flagcdn.com/w160/es.png', grupo: 'E' },
-  { id: 'ale', nombre: 'Alemania', codigo: 'GER', bandera: 'https://flagcdn.com/w160/de.png', grupo: 'E' },
-  { id: 'jpn', nombre: 'Japón', codigo: 'JPN', bandera: 'https://flagcdn.com/w160/jp.png', grupo: 'E' },
-  { id: 'aus', nombre: 'Australia', codigo: 'AUS', bandera: 'https://flagcdn.com/w160/au.png', grupo: 'E' },
+  { id: 'ger', nombre: 'Alemania', codigo: 'GER', bandera: 'https://flagcdn.com/w160/de.png', grupo: 'E' },
+  { id: 'cuw', nombre: 'Curazao', codigo: 'CUW', bandera: 'https://flagcdn.com/w160/cw.png', grupo: 'E' },
+  { id: 'civ', nombre: 'Costa de Marfil', codigo: 'CIV', bandera: 'https://flagcdn.com/w160/ci.png', grupo: 'E' },
+  { id: 'ecu', nombre: 'Ecuador', codigo: 'ECU', bandera: 'https://flagcdn.com/w160/ec.png', grupo: 'E' },
   // Grupo F
-  { id: 'fra', nombre: 'Francia', codigo: 'FRA', bandera: 'https://flagcdn.com/w160/fr.png', grupo: 'F' },
-  { id: 'ing', nombre: 'Inglaterra', codigo: 'ENG', bandera: 'https://flagcdn.com/w160/gb-eng.png', grupo: 'F' },
-  { id: 'cro', nombre: 'Croacia', codigo: 'CRO', bandera: 'https://flagcdn.com/w160/hr.png', grupo: 'F' },
-  { id: 'mar', nombre: 'Marruecos', codigo: 'MAR', bandera: 'https://flagcdn.com/w160/ma.png', grupo: 'F' },
+  { id: 'ned', nombre: 'Países Bajos', codigo: 'NED', bandera: 'https://flagcdn.com/w160/nl.png', grupo: 'F' },
+  { id: 'jpn', nombre: 'Japón', codigo: 'JPN', bandera: 'https://flagcdn.com/w160/jp.png', grupo: 'F' },
+  { id: 'swe', nombre: 'Suecia', codigo: 'SWE', bandera: 'https://flagcdn.com/w160/se.png', grupo: 'F' },
+  { id: 'tun', nombre: 'Túnez', codigo: 'TUN', bandera: 'https://flagcdn.com/w160/tn.png', grupo: 'F' },
   // Grupo G
-  { id: 'por', nombre: 'Portugal', codigo: 'POR', bandera: 'https://flagcdn.com/w160/pt.png', grupo: 'G' },
-  { id: 'ned', nombre: 'Países Bajos', codigo: 'NED', bandera: 'https://flagcdn.com/w160/nl.png', grupo: 'G' },
-  { id: 'sui', nombre: 'Suiza', codigo: 'SUI', bandera: 'https://flagcdn.com/w160/ch.png', grupo: 'G' },
-  { id: 'kor', nombre: 'Corea del Sur', codigo: 'KOR', bandera: 'https://flagcdn.com/w160/kr.png', grupo: 'G' },
+  { id: 'bel', nombre: 'Bélgica', codigo: 'BEL', bandera: 'https://flagcdn.com/w160/be.png', grupo: 'G' },
+  { id: 'egy', nombre: 'Egipto', codigo: 'EGY', bandera: 'https://flagcdn.com/w160/eg.png', grupo: 'G' },
+  { id: 'irn', nombre: 'RI de Irán', codigo: 'IRN', bandera: 'https://flagcdn.com/w160/ir.png', grupo: 'G' },
+  { id: 'nzl', nombre: 'Nueva Zelanda', codigo: 'NZL', bandera: 'https://flagcdn.com/w160/nz.png', grupo: 'G' },
   // Grupo H
-  { id: 'ita', nombre: 'Italia', codigo: 'ITA', bandera: 'https://flagcdn.com/w160/it.png', grupo: 'H' },
-  { id: 'bel', nombre: 'Bélgica', codigo: 'BEL', bandera: 'https://flagcdn.com/w160/be.png', grupo: 'H' },
-  { id: 'den', nombre: 'Dinamarca', codigo: 'DEN', bandera: 'https://flagcdn.com/w160/dk.png', grupo: 'H' },
-  { id: 'sen', nombre: 'Senegal', codigo: 'SEN', bandera: 'https://flagcdn.com/w160/sn.png', grupo: 'H' },
+  { id: 'esp', nombre: 'España', codigo: 'ESP', bandera: 'https://flagcdn.com/w160/es.png', grupo: 'H' },
+  { id: 'cpv', nombre: 'Cabo Verde', codigo: 'CPV', bandera: 'https://flagcdn.com/w160/cv.png', grupo: 'H' },
+  { id: 'ksa', nombre: 'Arabia Saudí', codigo: 'KSA', bandera: 'https://flagcdn.com/w160/sa.png', grupo: 'H' },
+  { id: 'uru', nombre: 'Uruguay', codigo: 'URU', bandera: 'https://flagcdn.com/w160/uy.png', grupo: 'H' },
+  // Grupo I
+  { id: 'fra', nombre: 'Francia', codigo: 'FRA', bandera: 'https://flagcdn.com/w160/fr.png', grupo: 'I' },
+  { id: 'sen', nombre: 'Senegal', codigo: 'SEN', bandera: 'https://flagcdn.com/w160/sn.png', grupo: 'I' },
+  { id: 'irq', nombre: 'Irak', codigo: 'IRQ', bandera: 'https://flagcdn.com/w160/iq.png', grupo: 'I' },
+  { id: 'nor', nombre: 'Noruega', codigo: 'NOR', bandera: 'https://flagcdn.com/w160/no.png', grupo: 'I' },
+  // Grupo J
+  { id: 'arg', nombre: 'Argentina', codigo: 'ARG', bandera: 'https://flagcdn.com/w160/ar.png', grupo: 'J' },
+  { id: 'alg', nombre: 'Argelia', codigo: 'ALG', bandera: 'https://flagcdn.com/w160/dz.png', grupo: 'J' },
+  { id: 'aut', nombre: 'Austria', codigo: 'AUT', bandera: 'https://flagcdn.com/w160/at.png', grupo: 'J' },
+  { id: 'jor', nombre: 'Jordania', codigo: 'JOR', bandera: 'https://flagcdn.com/w160/jo.png', grupo: 'J' },
+  // Grupo K
+  { id: 'por', nombre: 'Portugal', codigo: 'POR', bandera: 'https://flagcdn.com/w160/pt.png', grupo: 'K' },
+  { id: 'cod', nombre: 'RD de Congo', codigo: 'COD', bandera: 'https://flagcdn.com/w160/cd.png', grupo: 'K' },
+  { id: 'uzb', nombre: 'Uzbekistán', codigo: 'UZB', bandera: 'https://flagcdn.com/w160/uz.png', grupo: 'K' },
+  { id: 'col', nombre: 'Colombia', codigo: 'COL', bandera: 'https://flagcdn.com/w160/co.png', grupo: 'K' },
+  // Grupo L
+  { id: 'eng', nombre: 'Inglaterra', codigo: 'ENG', bandera: 'https://flagcdn.com/w160/gb-eng.png', grupo: 'L' },
+  { id: 'cro', nombre: 'Croacia', codigo: 'CRO', bandera: 'https://flagcdn.com/w160/hr.png', grupo: 'L' },
+  { id: 'gha', nombre: 'Ghana', codigo: 'GHA', bandera: 'https://flagcdn.com/w160/gh.png', grupo: 'L' },
+  { id: 'pan', nombre: 'Panamá', codigo: 'PAN', bandera: 'https://flagcdn.com/w160/pa.png', grupo: 'L' },
 ];
 
 const estadios = [
@@ -91,7 +111,9 @@ const estadios = [
   'Mercedes-Benz Stadium - Atlanta',
   'Gillette Stadium - Boston',
   'BMO Field - Toronto',
-  'BC Place - Vancouver'
+  'BC Place - Vancouver',
+  'Lincoln Financial Field - Filadelfia',
+  'Arrowhead Stadium - Kansas City'
 ];
 
 // Componente de Select compatible con móviles
@@ -300,7 +322,7 @@ export function CrearPartidoScreen({ onBack, partido }: CrearPartidoScreenProps)
             {fase === 'fase-grupos' && (
               <div className="space-y-2">
                 <Label>Grupo</Label>
-                <div className="grid grid-cols-8 gap-1">
+                <div className="grid grid-cols-6 gap-1">
                   {grupos.map(g => (
                     <button
                       key={g}
