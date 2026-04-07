@@ -298,8 +298,8 @@ export function AdminScreen({ onBack, onSelectSorteo, onCrearSorteo, onVerGanado
                   </div>
                   
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-pollo-amarillo rounded-xl flex items-center justify-center flex-shrink-0">
-                      <Gift className="w-6 h-6 text-pollo-marron" />
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 bg-secondary">
+                      <Gift className="w-6 h-6 text-primary" />
                     </div>
                     <div className="flex-1">
                       <h3 className="font-bold text-pollo-marron">{sorteo.titulo}</h3>
