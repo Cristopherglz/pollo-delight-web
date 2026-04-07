@@ -83,7 +83,7 @@ export function AdminScreen({ onBack, onSelectSorteo, onCrearSorteo, onVerGanado
       <div className="px-6 py-6 space-y-6">
         {/* Stats Grid */}
         <div className="grid grid-cols-2 gap-3">
-          <div className="bg-pollo-fondo-claro/80 backdrop-blur-sm rounded-2xl p-4 border border-pollo-marron/20">
+          <div className="bg-pollo-fondo-claro/80 backdrop-blur-sm rounded-2xl p-4 border border-pollo-marron/20 shadow-none">
             <div className="flex items-center gap-2 mb-2">
               <Gift className="w-4 h-4 text-pollo-marron" />
               <span className="text-xs text-pollo-marron/60">Total Sorteos</span>
@@ -120,7 +120,7 @@ export function AdminScreen({ onBack, onSelectSorteo, onCrearSorteo, onVerGanado
         <div className="rounded-2xl p-5 bg-sky-200 shadow-md">
           <div className="flex items-center gap-2 mb-4">
             <Globe className="w-5 h-5 text-primary-foreground" />
-            <h2 className="text-lg font-bold text-primary-foreground">Mundial 2026</h2>
+            <h2 className="text-lg font-bold text-primary-foreground">MUNDIAL 2026</h2>
           </div>
           
           <div className="grid grid-cols-3 gap-3 mb-4">
