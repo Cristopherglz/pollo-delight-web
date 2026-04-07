@@ -87,7 +87,7 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
         {prediccionesHabilitadas && (
           <div 
             onClick={() => onNavigate('partidos-mundial')}
-            className="relative overflow-hidden rounded-2xl cursor-pointer group bg-pollo-azul-claro border border-pollo-azul/30 shadow-md"
+            className="relative overflow-hidden rounded-2xl cursor-pointer group bg-pollo-azul-claro border border-pollo-azul/30 shadow-soft"
           >
             <div className="relative p-5 shadow-md">
               <div className="flex items-start justify-between">
