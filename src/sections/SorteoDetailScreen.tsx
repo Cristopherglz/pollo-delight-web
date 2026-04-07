@@ -208,7 +208,7 @@ export function SorteoDetailScreen({ sorteo, onBack, onIrAPartido }: SorteoDetai
           <h2 className="text-lg font-bold text-pollo-marron mb-3">Requisitos</h2>
           <div className="space-y-2">
             {sorteo.requisitos.map((requisito, index) => (
-              <div key={index} className="flex items-center gap-3 p-3 bg-pollo-fondo-claro/80 rounded-xl border border-pollo-amarillo/30">
+              <div key={index} className="flex items-center gap-3 p-3 bg-pollo-fondo-claro/80 rounded-xl border border-green-400 bg-green-200">
                 <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
                   <Check className="w-4 h-4 text-green-600" />
                 </div>
