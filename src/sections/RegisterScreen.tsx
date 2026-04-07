@@ -71,12 +71,13 @@ export function RegisterScreen({ onBack, onSuccess, onLogin }: RegisterScreenPro
       const success = await register(formData);
       if (success) {
         onSuccess();
-      } else {
-        setError('El email ya está registrado');
+      }
+    } catch (err: any) {
+      const msg = err?.message || 'Error al registrar. Intenta de nuevo.';
+      setError(msg);
+      if (msg.includes('email')) {
         setStep(1);
       }
-    } catch (err) {
-      setError('Error al registrar. Intenta de nuevo.');
     } finally {
       setIsLoading(false);
     }
