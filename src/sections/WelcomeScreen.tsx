@@ -83,7 +83,7 @@ export function WelcomeScreen({ onLogin, onRegister }: WelcomeScreenProps) {
           </div>
           
           <div className="flex items-center gap-4 p-4 bg-pollo-fondo-claro/80 backdrop-blur-sm rounded-2xl border border-pollo-marron/20">
-            <div className="w-12 h-12 bg-pollo-marron rounded-xl flex items-center justify-center shadow-md">
+            <div className="w-12 h-12 bg-pollo-marron rounded-xl flex items-center justify-center shadow-md gap-0 mx-0 px-[11px]">
               <Trophy className="w-6 h-6 text-pollo-amarillo" />
             </div>
             <div>
