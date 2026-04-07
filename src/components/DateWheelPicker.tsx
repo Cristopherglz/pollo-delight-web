@@ -194,7 +194,7 @@ export function DateWheelPicker({ value, onConfirm, onCancel }: DateWheelPickerP
   const [dayIndex, setDayIndex] = useState(parsed ? parsed.getDate() - 1 : today.getDate() - 1);
   const [yearIndex, setYearIndex] = useState(0);
 
-  const startYear = 1940;
+  const startYear = 1900;
   const endYear = today.getFullYear();
   const years = Array.from({ length: endYear - startYear + 1 }, (_, i) => String(startYear + i));
 
