@@ -23,6 +23,7 @@ import { RecuperarPasswordScreen } from '@/sections/RecuperarPasswordScreen';
 import { PrediccionConfirmadaScreen } from '@/sections/PrediccionConfirmadaScreen';
 
 import { BottomNav } from '@/components/BottomNav';
+import { PWAInstallPrompt } from '@/components/PWAInstallPrompt';
 import { useStore } from '@/store';
 import type { Sorteo, Partido, Prediccion } from '@/types';
 import './App.css';
@@ -369,6 +370,7 @@ function App() {
           prediccionesHabilitadas={useStore.getState().prediccionesHabilitadas}
         />
       )}
+      <PWAInstallPrompt />
     </div>
   );
 }
