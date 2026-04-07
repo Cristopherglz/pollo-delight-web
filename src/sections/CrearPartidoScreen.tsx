@@ -17,6 +17,7 @@ interface CrearPartidoScreenProps {
 
 const fasesMundial: { value: FaseMundial; label: string }[] = [
   { value: 'fase-grupos', label: 'Fase de Grupos' },
+  { value: 'dieciseisavos', label: 'Dieciseisavos de Final' },
   { value: 'octavos', label: 'Octavos de Final' },
   { value: 'cuartos', label: 'Cuartos de Final' },
   { value: 'semifinales', label: 'Semifinales' },
