@@ -117,10 +117,10 @@ export function AdminScreen({ onBack, onSelectSorteo, onCrearSorteo, onVerGanado
         </div>
 
         {/* Mundial 2026 - Stats */}
-        <div className="rounded-2xl p-5 shadow-md bg-[#dee9f8]">
+        <div className="rounded-2xl p-5 shadow-md bg-[#72aadf]">
           <div className="flex items-center gap-2 mb-4">
-            <Globe className="w-5 h-5 text-primary-foreground" />
-            <h2 className="text-lg font-bold text-primary-foreground">MUNDIAL 2026</h2>
+            <Globe className="w-5 h-5 text-white" />
+            <h2 className="text-lg font-bold text-white">MUNDIAL 2026</h2>
           </div>
           
           <div className="grid grid-cols-3 gap-3 mb-4">
