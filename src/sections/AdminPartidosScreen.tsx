@@ -111,7 +111,7 @@ export function AdminPartidosScreen({
           <Button 
             size="sm" 
             onClick={onCrearPartido}
-            className="bg-pollo-amarillo hover:bg-pollo-amarillo text-pollo-marron"
+            className="bg-pollo-amarillo hover:bg-pollo-amarillo text-pollo-marron shadow-md"
           >
             <Plus className="w-4 h-4 mr-1" />
             Nuevo
