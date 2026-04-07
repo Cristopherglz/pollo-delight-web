@@ -380,7 +380,15 @@ export const useStore = create<AppState>()(
         const usuarios = JSON.parse(localStorage.getItem('hiperdelpollo-users') || '[]');
         
         if (usuarios.some((u: any) => u.email === userData.email)) {
-          return false;
+          throw new Error('El email ya está registrado');
+        }
+        
+        if (usuarios.some((u: any) => u.dni === userData.dni)) {
+          throw new Error('El D.N.I. ya está registrado');
+        }
+        
+        if (usuarios.some((u: any) => u.telefono === userData.telefono)) {
+          throw new Error('El número de teléfono ya está registrado');
         }
         
         usuarios.push({ ...newUser, password: userData.password });
