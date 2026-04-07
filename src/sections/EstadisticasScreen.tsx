@@ -179,7 +179,7 @@ export function EstadisticasScreen({ onBack }: EstadisticasScreenProps) {
 
               <div className="grid grid-cols-2 gap-3">
                 <div className="bg-pollo-amarillo/10 rounded-xl p-3 text-center">
-                  <Users className="w-5 h-5 text-pollo-amarillo mx-auto mb-1" />
+                  <Users className="w-5 h-5 mx-auto mb-1 text-primary-foreground" />
                   <p className="text-xl font-bold text-pollo-marron">{statsSorteo.totalParticipantes}</p>
                   <p className="text-xs text-pollo-marron/60">Total Participaciones</p>
                 </div>
@@ -198,7 +198,7 @@ export function EstadisticasScreen({ onBack }: EstadisticasScreenProps) {
                 </div>
                 <div className="w-full h-2 bg-pollo-marron/20 rounded-full overflow-hidden">
                   <div 
-                    className="h-full bg-pollo-amarillo rounded-full"
+                    className="h-full rounded-full bg-green-400"
                     style={{ width: `${Math.min(statsSorteo.tasaConversion * 50, 100)}%` }}
                   />
                 </div>
@@ -250,7 +250,7 @@ export function EstadisticasScreen({ onBack }: EstadisticasScreenProps) {
                         </span>
                         <div className="flex-1 h-6 bg-pollo-marron/10 rounded-lg overflow-hidden relative">
                           <div 
-                            className="h-full bg-pollo-amarillo rounded-lg"
+                            className="h-full rounded-lg bg-green-400"
                             style={{ 
                               width: `${Math.min((dia.cantidad / Math.max(...statsSorteo.participacionesPorDia.map(d => d.cantidad))) * 100, 100)}%` 
                             }}
