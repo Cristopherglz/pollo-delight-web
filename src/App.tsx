@@ -223,7 +223,10 @@ function App() {
           <AdminScreen
             onBack={() => navigateTo('home')}
             onSelectSorteo={(sorteo) => navigateTo('admin-sorteo', sorteo)}
-            onCrearSorteo={() => navigateTo('crear-sorteo')}
+            onCrearSorteo={() => {
+              setSelectedSorteo(null);
+              navigateTo('crear-sorteo');
+            }}
             onVerGanadores={() => navigateTo('ganadores')}
             onVerEstadisticas={() => navigateTo('estadisticas')}
             onVerPartidos={() => navigateTo('admin-partidos')}
