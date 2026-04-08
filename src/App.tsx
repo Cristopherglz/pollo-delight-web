@@ -310,7 +310,10 @@ function App() {
         return (
           <AdminPartidosScreen
             onBack={() => navigateTo('admin')}
-            onCrearPartido={() => navigateTo('admin-crear-partido')}
+            onCrearPartido={() => {
+              setSelectedPartido(null);
+              navigateTo('admin-crear-partido');
+            }}
             onEditarPartido={(partido) => navigateTo('admin-crear-partido', partido)}
             onVerAcertadores={(partido) => navigateTo('admin-acertadores', partido)}
           />
