@@ -379,6 +379,9 @@ export function CrearSorteoScreen({ onBack, sorteoEditar }: CrearSorteoScreenPro
               <p className="text-xs text-pollo-marron/60">Próximamente</p>
             </button>
           </div>
+        </div>
+
+        {/* Restricciones de edad */}
         <div className="card-premium">
           <h2 className="text-lg font-bold text-pollo-marron mb-4 flex items-center gap-2">
             <Users className="w-5 h-5 text-pollo-marron" />
