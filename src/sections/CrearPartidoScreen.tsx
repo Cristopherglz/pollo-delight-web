@@ -5,7 +5,8 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { ArrowLeft, Trophy, Calendar, MapPin, Clock, Save, Image as ImageIcon, Video } from 'lucide-react';
+import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { ArrowLeft, Trophy, Calendar, MapPin, Clock, Save, Image as ImageIcon, Video, CheckCircle2, AlertCircle } from 'lucide-react';
 import { toast } from 'sonner';
 import { useIsMobile } from '@/hooks/use-mobile';
 import type { Partido, Equipo, FaseMundial, EstadoPartido } from '@/types';
@@ -195,8 +196,10 @@ export function CrearPartidoScreen({ onBack, partido }: CrearPartidoScreenProps)
   const [imagen, setImagen] = useState<string>(partido?.imagen || '');
   const [video, setVideo] = useState<string>(partido?.video || '');
   const [descripcion, setDescripcion] = useState<string>(partido?.descripcion || '');
-  const [sorteoId, setSorteoId] = useState<string>(partido?.sorteoId || 'sorteo-mundial-1');
+  const [sorteoId, setSorteoId] = useState<string>(partido?.sorteoId || '');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false);
+  const [validationErrors, setValidationErrors] = useState<string[]>([]);
 
   // Filtrar equipos por grupo si es fase de grupos
   const equiposFiltrados = fase === 'fase-grupos' 
@@ -205,32 +208,28 @@ export function CrearPartidoScreen({ onBack, partido }: CrearPartidoScreenProps)
 
   const handleSubmit = async () => {
     // Validaciones
+    const errores: string[] = [];
+    
     if (!equipoLocal || !equipoVisitante) {
-      toast.error('Debes seleccionar ambos equipos');
-      return;
+      errores.push('Debes seleccionar ambos equipos');
     }
-
-    if (equipoLocal === equipoVisitante) {
-      toast.error('Los equipos no pueden ser iguales');
-      return;
+    if (equipoLocal && equipoVisitante && equipoLocal === equipoVisitante) {
+      errores.push('Los equipos no pueden ser iguales');
     }
-
-    if (!fecha || !hora) {
-      toast.error('Debes ingresar fecha y hora del partido');
-      return;
-    }
-
-    if (!estadio || !ciudad) {
-      toast.error('Debes ingresar estadio y ciudad');
-      return;
-    }
-
-    // Validar resultado si está finalizado
+    if (!fecha) errores.push('La fecha del partido es obligatoria');
+    if (!hora) errores.push('La hora del partido es obligatoria');
+    if (!estadio) errores.push('El estadio es obligatorio');
+    if (!ciudad) errores.push('La ciudad es obligatoria');
     if (estado === 'finalizado' && (golesLocal === '' || golesVisitante === '')) {
-      toast.error('Debes ingresar el resultado final del partido');
-      return;
+      errores.push('Debes ingresar el resultado final del partido');
     }
 
+    if (errores.length > 0) {
+      setValidationErrors(errores);
+      return;
+    }
+    
+    setValidationErrors([]);
     setIsSubmitting(true);
 
     try {
@@ -252,21 +251,27 @@ export function CrearPartidoScreen({ onBack, partido }: CrearPartidoScreenProps)
         imagen: imagen || undefined,
         video: video || undefined,
         descripcion: descripcion || undefined,
-        sorteoId
+        sorteoId: sorteoId || undefined
       };
 
       if (isEditando && partido) {
         const success = actualizarPartido(partido.id, partidoData);
         if (success) {
-          toast.success('Partido actualizado correctamente');
-          onBack();
+          setShowSuccessDialog(true);
+          setTimeout(() => {
+            setShowSuccessDialog(false);
+            onBack();
+          }, 2000);
         } else {
           toast.error('No se pudo actualizar el partido');
         }
       } else {
         crearPartido(partidoData);
-        toast.success('Partido creado correctamente');
-        onBack();
+        setShowSuccessDialog(true);
+        setTimeout(() => {
+          setShowSuccessDialog(false);
+          onBack();
+        }, 2000);
       }
     } catch (error) {
       toast.error('Error al guardar el partido');
@@ -298,6 +303,20 @@ export function CrearPartidoScreen({ onBack, partido }: CrearPartidoScreenProps)
       </div>
 
       <div className="p-4 space-y-4 pb-24">
+        {/* Errores de validación */}
+        {validationErrors.length > 0 && (
+          <div className="p-4 bg-red-50 border border-red-200 rounded-2xl animate-fade-in">
+            <div className="flex items-center gap-2 mb-2">
+              <AlertCircle className="w-5 h-5 text-red-500" />
+              <p className="font-bold text-red-700">Corregir errores:</p>
+            </div>
+            <ul className="list-disc list-inside text-sm text-red-600">
+              {validationErrors.map((error, index) => (
+                <li key={index}>{error}</li>
+              ))}
+            </ul>
+          </div>
+        )}
         {/* Fase y Grupo */}
         <Card>
           <CardContent className="p-4 space-y-4">
@@ -542,15 +561,35 @@ export function CrearPartidoScreen({ onBack, partido }: CrearPartidoScreenProps)
                 value={sorteoId}
                 onValueChange={setSorteoId}
                 placeholder="Seleccionar sorteo"
-                options={sorteos.filter(s => s.estado === 'activo').map(sorteo => ({
+              options={[
+                { value: '', label: 'Sin sorteo asociado' },
+                ...sorteos.map(sorteo => ({
                   value: sorteo.id,
-                  label: sorteo.titulo
-                }))}
+                  label: `${sorteo.titulo} (${sorteo.estado})`
+                }))
+              ]}
               />
             </div>
           </CardContent>
         </Card>
       </div>
+
+      {/* Diálogo de éxito */}
+      <Dialog open={showSuccessDialog} onOpenChange={setShowSuccessDialog}>
+        <DialogContent className="text-center py-8">
+          <div className="flex flex-col items-center gap-4">
+            <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center animate-scale-in">
+              <CheckCircle2 className="w-10 h-10 text-green-500" />
+            </div>
+            <h2 className="text-xl font-black text-pollo-marron">
+              {isEditando ? '¡Partido actualizado!' : '¡Partido creado exitosamente!'}
+            </h2>
+            <p className="text-sm text-gray-500">
+              {isEditando ? 'Los cambios se guardaron correctamente' : 'El partido fue registrado con éxito'}
+            </p>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       {/* Botón Guardar (Sticky) */}
       <div className="fixed bottom-0 left-0 right-0 p-4 bg-white border-t border-gray-200 max-w-md mx-auto">

@@ -223,7 +223,10 @@ function App() {
           <AdminScreen
             onBack={() => navigateTo('home')}
             onSelectSorteo={(sorteo) => navigateTo('admin-sorteo', sorteo)}
-            onCrearSorteo={() => navigateTo('crear-sorteo')}
+            onCrearSorteo={() => {
+              setSelectedSorteo(null);
+              navigateTo('crear-sorteo');
+            }}
             onVerGanadores={() => navigateTo('ganadores')}
             onVerEstadisticas={() => navigateTo('estadisticas')}
             onVerPartidos={() => navigateTo('admin-partidos')}
@@ -244,6 +247,7 @@ function App() {
         return (
           <CrearSorteoScreen
             onBack={() => navigateTo('admin')}
+            sorteoEditar={selectedSorteo}
           />
         );
 
@@ -306,7 +310,10 @@ function App() {
         return (
           <AdminPartidosScreen
             onBack={() => navigateTo('admin')}
-            onCrearPartido={() => navigateTo('admin-crear-partido')}
+            onCrearPartido={() => {
+              setSelectedPartido(null);
+              navigateTo('admin-crear-partido');
+            }}
             onEditarPartido={(partido) => navigateTo('admin-crear-partido', partido)}
             onVerAcertadores={(partido) => navigateTo('admin-acertadores', partido)}
           />

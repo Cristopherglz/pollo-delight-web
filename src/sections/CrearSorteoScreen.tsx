@@ -26,7 +26,7 @@ export function CrearSorteoScreen({ onBack, sorteoEditar }: CrearSorteoScreenPro
     edadMaxima: sorteoEditar?.edadMaxima || '',
     maxParticipantes: sorteoEditar?.maxParticipantes || '',
     terminosCondiciones: sorteoEditar?.terminosCondiciones || '',
-    estado: sorteoEditar?.estado || 'proximo' as const,
+    estado: sorteoEditar?.estado || 'activo' as const,
     requisitos: sorteoEditar?.requisitos || ['Ser mayor de 18 años', 'Residir en Posadas'],
     requisitosPersonalizados: sorteoEditar?.requisitosPersonalizados || [],
     tipoSorteo: sorteoEditar?.tipoSorteo || 'posiciones' as TipoSorteo,
@@ -175,7 +175,7 @@ export function CrearSorteoScreen({ onBack, sorteoEditar }: CrearSorteoScreenPro
     setTimeout(() => {
       setShowSuccess(false);
       onBack();
-    }, 2000);
+    }, 2500);
   };
 
   return (
@@ -204,15 +204,19 @@ export function CrearSorteoScreen({ onBack, sorteoEditar }: CrearSorteoScreenPro
 
       {/* Content */}
       <div className="px-6 py-6 space-y-6">
-        {/* Mensaje de éxito */}
+        {/* Mensaje de éxito animado */}
         {showSuccess && (
-          <div className="p-4 bg-green-50 border border-green-200 rounded-2xl flex items-center gap-3 animate-slide-up">
-            <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
-              <Check className="w-5 h-5 text-white" />
-            </div>
-            <div>
-              <p className="font-bold text-green-700">¡Sorteo guardado!</p>
-              <p className="text-sm text-green-600">Los cambios se han guardado correctamente</p>
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm animate-fade-in">
+            <div className="bg-white rounded-3xl p-8 mx-6 text-center shadow-2xl animate-scale-in">
+              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Check className="w-10 h-10 text-green-500" />
+              </div>
+              <p className="text-xl font-black text-pollo-marron mb-1">
+                {sorteoEditar ? '¡Sorteo actualizado!' : '¡Sorteo creado exitosamente!'}
+              </p>
+              <p className="text-sm text-gray-500">
+                {sorteoEditar ? 'Los cambios se guardaron correctamente' : 'El sorteo fue registrado con éxito'}
+              </p>
             </div>
           </div>
         )}
@@ -341,6 +345,39 @@ export function CrearSorteoScreen({ onBack, sorteoEditar }: CrearSorteoScreenPro
                 className="w-full px-4 py-3 rounded-xl border border-pollo-marron/30 focus:border-pollo-amarillo focus:ring-2 focus:ring-pollo-amarillo/20 outline-none"
               />
             </div>
+          </div>
+        </div>
+
+        {/* Estado del Sorteo */}
+        <div className="card-premium">
+          <h2 className="text-lg font-bold text-pollo-marron mb-4 flex items-center gap-2">
+            Estado del Sorteo
+          </h2>
+          <div className="grid grid-cols-2 gap-3">
+            <button
+              type="button"
+              onClick={() => handleInputChange('estado', 'activo')}
+              className={`p-3 rounded-xl border-2 transition-all ${
+                formData.estado === 'activo'
+                  ? 'border-green-500 bg-green-50'
+                  : 'border-pollo-marron/30 hover:border-green-300'
+              }`}
+            >
+              <p className="font-bold text-sm text-pollo-marron">Activo</p>
+              <p className="text-xs text-pollo-marron/60">Visible y abierto</p>
+            </button>
+            <button
+              type="button"
+              onClick={() => handleInputChange('estado', 'proximo')}
+              className={`p-3 rounded-xl border-2 transition-all ${
+                formData.estado === 'proximo'
+                  ? 'border-blue-500 bg-blue-50'
+                  : 'border-pollo-marron/30 hover:border-blue-300'
+              }`}
+            >
+              <p className="font-bold text-sm text-pollo-marron">Programado</p>
+              <p className="text-xs text-pollo-marron/60">Próximamente</p>
+            </button>
           </div>
         </div>
 
@@ -655,31 +692,8 @@ export function CrearSorteoScreen({ onBack, sorteoEditar }: CrearSorteoScreenPro
                   </span>
                 </div>
                 
-                {/* Imagen del premio */}
-                <div 
-                  onClick={() => {
-                    setPremioEditando(index);
-                    premioFileInputRef.current?.click();
-                  }}
-                  className="w-full h-24 bg-white/50 rounded-xl border-2 border-dashed border-pollo-marron/40 flex flex-col items-center justify-center cursor-pointer hover:bg-white/70 transition-colors mb-3"
-                >
-                  {premio.imagen ? (
-                    <img src={premio.imagen} alt={premio.nombre} className="w-full h-full object-cover rounded-xl" />
-                  ) : (
-                    <>
-                      <Upload className="w-6 h-6 text-pollo-marron/40 mb-1" />
-                      <p className="text-xs text-pollo-marron/50">Imagen del premio</p>
-                    </>
-                  )}
-                </div>
                 
-                <input
-                  ref={premioFileInputRef}
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) => handleImagenPremioChange(e, premioEditando || 0)}
-                  className="hidden"
-                />
+                
                 
                 <input
                   type="text"
