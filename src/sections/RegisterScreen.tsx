@@ -224,8 +224,13 @@ export function RegisterScreen({ onBack, onSuccess, onLogin }: RegisterScreenPro
                   <Phone className="input-icon w-5 h-5" strokeWidth={2} />
                   <input
                     type="tel"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
                     value={formData.telefono}
-                    onChange={(e) => updateField('telefono', e.target.value)}
+                    onChange={(e) => {
+                      const val = e.target.value.replace(/[^0-9]/g, '');
+                      updateField('telefono', val);
+                    }}
                     placeholder="Tu número de teléfono"
                     className="input-pollo"
                   />
@@ -240,8 +245,13 @@ export function RegisterScreen({ onBack, onSuccess, onLogin }: RegisterScreenPro
                   <CreditCard className="input-icon w-5 h-5" strokeWidth={2} />
                   <input
                     type="text"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
                     value={formData.dni}
-                    onChange={(e) => updateField('dni', e.target.value)}
+                    onChange={(e) => {
+                      const val = e.target.value.replace(/[^0-9]/g, '');
+                      updateField('dni', val);
+                    }}
                     placeholder="Tu D.N.I."
                     className="input-pollo"
                   />
