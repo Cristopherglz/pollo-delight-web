@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { ArrowLeft, Gift, Calendar, Users, Check, Sparkles, Trophy, AlertCircle, Clock, Share2, Target, TrendingUp, ShieldAlert, X, MessageCircle, Instagram, Facebook } from 'lucide-react';
+import { ArrowLeft, Gift, Calendar, Users, Check, Sparkles, Trophy, AlertCircle, Clock, Share2, Target, TrendingUp, ShieldAlert, X, MessageCircle, Instagram, Facebook, FileText } from 'lucide-react';
 import { useStore } from '@/store';
 import type { Sorteo } from '@/types';
+import { toast } from 'sonner';
 
 interface SorteoDetailScreenProps {
   sorteo: Sorteo;
@@ -10,31 +11,52 @@ interface SorteoDetailScreenProps {
 }
 
 export function SorteoDetailScreen({ sorteo, onBack, onIrAPartido }: SorteoDetailScreenProps) {
-  const { user, esAdmin, verificarParticipacion, partidos } = useStore();
+  const { user, esAdmin, verificarParticipacion, partidos, prediccionesHabilitadas, participarEnSorteo } = useStore();
   const [error, setError] = useState('');
   const [showShareModal, setShowShareModal] = useState(false);
+  const [isParticipating, setIsParticipating] = useState(false);
   
   const yaParticipa = user ? verificarParticipacion(sorteo.id) : false;
   
   // Buscar el partido relacionado con este sorteo
   const partidoRelacionado = partidos.find(p => p.sorteoId === sorteo.id);
 
+  // Determinar si se puede participar directamente (sin predicción)
+  const participacionDirecta = !prediccionesHabilitadas || !partidoRelacionado;
+
   const handleIrAPartido = () => {
     if (!user) {
       setError('Debes iniciar sesión para participar');
       return;
     }
-
-    // Verificar si el usuario es administrador
     if (esAdmin) {
       setError('Los administradores del sorteo no pueden participar de los sorteos');
       return;
     }
 
-    if (partidoRelacionado && onIrAPartido) {
+    if (participacionDirecta) {
+      // Participación directa sin predicción
+      handleParticiparDirecto();
+    } else if (partidoRelacionado && onIrAPartido) {
       onIrAPartido(partidoRelacionado.id);
     } else {
       setError('No hay un partido disponible para este sorteo');
+    }
+  };
+
+  const handleParticiparDirecto = async () => {
+    setIsParticipating(true);
+    try {
+      const success = await participarEnSorteo(sorteo.id);
+      if (success) {
+        toast.success('¡Ya estás participando del sorteo!');
+      } else {
+        setError('Ya estás participando de este sorteo');
+      }
+    } catch {
+      setError('Error al participar');
+    } finally {
+      setIsParticipating(false);
     }
   };
 
@@ -164,18 +186,29 @@ export function SorteoDetailScreen({ sorteo, onBack, onIrAPartido }: SorteoDetai
                 <Target className="w-6 h-6 text-pollo-marron" />
               </div>
               <div className="flex-1">
-                <h3 className="font-bold text-pollo-marron">Predecí el resultado</h3>
-                <p className="text-sm text-pollo-marron/70 mt-1">
-                  Para participar en este sorteo, debés predecir el resultado del partido relacionado.
-                </p>
-                <div className="flex items-center gap-2 mt-3 p-2 bg-green-50 rounded-lg">
-                  <TrendingUp className="w-4 h-4 text-green-600 flex-shrink-0" />
-                  <span className="text-green-600 font-medium text-sm">Si acertás: TRIPLE CHANCE</span>
-                </div>
-                <div className="flex items-center gap-2 mt-2 p-2 bg-gray-50 rounded-lg">
-                  <span className="w-4 h-4 flex items-center justify-center text-gray-400 flex-shrink-0">•</span>
-                  <span className="text-pollo-marron/60 text-sm">Si no acertás: 1 chance</span>
-                </div>
+                {participacionDirecta ? (
+                  <>
+                    <h3 className="font-bold text-pollo-marron">¡Participá directamente!</h3>
+                    <p className="text-sm text-pollo-marron/70 mt-1">
+                      Hacé clic en el botón de participar y ya estarás dentro del sorteo.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <h3 className="font-bold text-pollo-marron">Predecí el resultado</h3>
+                    <p className="text-sm text-pollo-marron/70 mt-1">
+                      Para participar en este sorteo, debés predecir el resultado del partido relacionado.
+                    </p>
+                    <div className="flex items-center gap-2 mt-3 p-2 bg-green-50 rounded-lg">
+                      <TrendingUp className="w-4 h-4 text-green-600 flex-shrink-0" />
+                      <span className="text-green-600 font-medium text-sm">Si acertás: TRIPLE CHANCE</span>
+                    </div>
+                    <div className="flex items-center gap-2 mt-2 p-2 bg-gray-50 rounded-lg">
+                      <span className="w-4 h-4 flex items-center justify-center text-gray-400 flex-shrink-0">•</span>
+                      <span className="text-pollo-marron/60 text-sm">Si no acertás: 1 chance</span>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           </div>
@@ -258,6 +291,19 @@ export function SorteoDetailScreen({ sorteo, onBack, onIrAPartido }: SorteoDetai
             </p>
           )}
         </div>
+
+        {/* Términos y Condiciones */}
+        {sorteo.terminosCondiciones && (
+          <div className="mt-6">
+            <h2 className="text-lg font-bold text-pollo-marron mb-3 flex items-center gap-2">
+              <FileText className="w-5 h-5" />
+              Términos y Condiciones
+            </h2>
+            <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
+              <p className="text-sm text-pollo-marron/70 whitespace-pre-wrap">{sorteo.terminosCondiciones}</p>
+            </div>
+          </div>
+        )}
 
         {/* Action Button - Al final del contenido */}
         <div className="mt-8 pt-4 border-t border-pollo-amarillo/20">
