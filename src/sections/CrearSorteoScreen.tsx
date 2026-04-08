@@ -26,7 +26,7 @@ export function CrearSorteoScreen({ onBack, sorteoEditar }: CrearSorteoScreenPro
     edadMaxima: sorteoEditar?.edadMaxima || '',
     maxParticipantes: sorteoEditar?.maxParticipantes || '',
     terminosCondiciones: sorteoEditar?.terminosCondiciones || '',
-    estado: sorteoEditar?.estado || 'proximo' as const,
+    estado: sorteoEditar?.estado || 'activo' as const,
     requisitos: sorteoEditar?.requisitos || ['Ser mayor de 18 años', 'Residir en Posadas'],
     requisitosPersonalizados: sorteoEditar?.requisitosPersonalizados || [],
     tipoSorteo: sorteoEditar?.tipoSorteo || 'posiciones' as TipoSorteo,
@@ -175,7 +175,7 @@ export function CrearSorteoScreen({ onBack, sorteoEditar }: CrearSorteoScreenPro
     setTimeout(() => {
       setShowSuccess(false);
       onBack();
-    }, 2000);
+    }, 2500);
   };
 
   return (
@@ -204,15 +204,19 @@ export function CrearSorteoScreen({ onBack, sorteoEditar }: CrearSorteoScreenPro
 
       {/* Content */}
       <div className="px-6 py-6 space-y-6">
-        {/* Mensaje de éxito */}
+        {/* Mensaje de éxito animado */}
         {showSuccess && (
-          <div className="p-4 bg-green-50 border border-green-200 rounded-2xl flex items-center gap-3 animate-slide-up">
-            <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
-              <Check className="w-5 h-5 text-white" />
-            </div>
-            <div>
-              <p className="font-bold text-green-700">¡Sorteo guardado!</p>
-              <p className="text-sm text-green-600">Los cambios se han guardado correctamente</p>
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm animate-fade-in">
+            <div className="bg-white rounded-3xl p-8 mx-6 text-center shadow-2xl animate-scale-in">
+              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Check className="w-10 h-10 text-green-500" />
+              </div>
+              <p className="text-xl font-black text-pollo-marron mb-1">
+                {sorteoEditar ? '¡Sorteo actualizado!' : '¡Sorteo creado exitosamente!'}
+              </p>
+              <p className="text-sm text-gray-500">
+                {sorteoEditar ? 'Los cambios se guardaron correctamente' : 'El sorteo fue registrado con éxito'}
+              </p>
             </div>
           </div>
         )}
