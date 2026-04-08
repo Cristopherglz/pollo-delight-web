@@ -244,6 +244,7 @@ function App() {
         return (
           <CrearSorteoScreen
             onBack={() => navigateTo('admin')}
+            sorteoEditar={selectedSorteo}
           />
         );
 

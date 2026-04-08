@@ -317,7 +317,7 @@ export function SorteoDetailScreen({ sorteo, onBack, onIrAPartido }: SorteoDetai
           {sorteo.estado === 'activo' && (
             <button
               onClick={handleIrAPartido}
-              disabled={yaParticipa || esAdmin}
+              disabled={yaParticipa || esAdmin || isParticipating}
               className={`w-full py-4 rounded-2xl font-bold text-lg transition-all flex items-center justify-center gap-2 ${
                 yaParticipa
                   ? 'bg-green-500 text-white cursor-default'
@@ -326,7 +326,9 @@ export function SorteoDetailScreen({ sorteo, onBack, onIrAPartido }: SorteoDetai
                   : 'btn-primary'
               }`}
             >
-              {yaParticipa ? (
+              {isParticipating ? (
+                <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+              ) : yaParticipa ? (
                 <>
                   <Check className="w-5 h-5" />
                   Ya estás participando
@@ -335,6 +337,11 @@ export function SorteoDetailScreen({ sorteo, onBack, onIrAPartido }: SorteoDetai
                 <>
                   <ShieldAlert className="w-5 h-5" />
                   No disponible para administradores
+                </>
+              ) : participacionDirecta ? (
+                <>
+                  <Gift className="w-5 h-5" />
+                  Participar del Sorteo
                 </>
               ) : (
                 <>
