@@ -513,42 +513,6 @@ export function CrearPartidoScreen({ onBack, partido }: CrearPartidoScreenProps)
           </CardContent>
         </Card>
 
-        {/* Multimedia */}
-        <Card>
-          <CardContent className="p-4 space-y-4">
-            <h3 className="font-bold text-pollo-marron flex items-center gap-2">
-              <ImageIcon className="w-4 h-4 text-pollo-marron" />
-              Multimedia
-            </h3>
-
-            <div className="space-y-2">
-              <Label>URL de la Imagen</Label>
-              <Input
-                value={imagen}
-                onChange={(e) => setImagen(e.target.value)}
-                placeholder="https://ejemplo.com/imagen.jpg"
-              />
-            </div>
-
-            <div className="space-y-2">
-              <Label>URL del Video (opcional)</Label>
-              <Input
-                value={video}
-                onChange={(e) => setVideo(e.target.value)}
-                placeholder="https://youtube.com/watch?v=..."
-              />
-            </div>
-
-            <div className="space-y-2">
-              <Label>Descripción</Label>
-              <Input
-                value={descripcion}
-                onChange={(e) => setDescripcion(e.target.value)}
-                placeholder="Descripción del partido..."
-              />
-            </div>
-          </CardContent>
-        </Card>
 
         {/* Sorteo Asociado */}
         <Card>

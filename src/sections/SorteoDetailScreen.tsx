@@ -107,8 +107,11 @@ export function SorteoDetailScreen({ sorteo, onBack, onIrAPartido }: SorteoDetai
   return (
     <div className="min-h-screen w-full">
       {/* Header Image */}
-      <div className="relative h-56 bg-pollo-marron">
-        <div className="absolute inset-0 bg-black/10" />
+      <div className="relative h-56 bg-pollo-marron overflow-hidden">
+        {sorteo.imagen ? (
+          <img src={sorteo.imagen} alt={sorteo.titulo} className="absolute inset-0 w-full h-full object-cover" />
+        ) : null}
+        <div className="absolute inset-0 bg-black/20" />
         
         {/* Back button */}
         <button
@@ -127,13 +130,15 @@ export function SorteoDetailScreen({ sorteo, onBack, onIrAPartido }: SorteoDetai
         </button>
 
         {/* Content */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center">
-            <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto">
-              <Gift className="w-10 h-10 text-pollo-marron" />
+        {!sorteo.imagen && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="text-center">
+              <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto">
+                <Gift className="w-10 h-10 text-white" />
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
 
       {/* Content */}
