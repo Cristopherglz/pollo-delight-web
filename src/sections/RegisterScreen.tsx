@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Eye, EyeOff, ArrowLeft, Mail, Lock, User, Phone, Calendar, MapPin, CreditCard, Check, Sparkles } from 'lucide-react';
+import { Eye, EyeOff, ArrowLeft, Mail, Lock, User, Phone, Calendar, MapPin, CreditCard, Check, Sparkles, MailCheck } from 'lucide-react';
 import { DateWheelPicker } from '@/components/DateWheelPicker';
 import { useStore } from '@/store';
 
@@ -12,7 +12,10 @@ interface RegisterScreenProps {
 export function RegisterScreen({ onBack, onSuccess, onLogin }: RegisterScreenProps) {
   const [step, setStep] = useState(1);
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [showVerificationScreen, setShowVerificationScreen] = useState(false);
   const [error, setError] = useState('');
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [formData, setFormData] = useState({
@@ -34,12 +37,16 @@ export function RegisterScreen({ onBack, onSuccess, onLogin }: RegisterScreenPro
   };
 
   const validateStep1 = () => {
-    if (!formData.nombre || !formData.apellido || !formData.email || !formData.password) {
+    if (!formData.nombre || !formData.apellido || !formData.email || !formData.password || !confirmPassword) {
       setError('Completá todos los campos');
       return false;
     }
     if (formData.password.length < 6) {
       setError('La contraseña debe tener al menos 6 caracteres');
+      return false;
+    }
+    if (formData.password !== confirmPassword) {
+      setError('Las contraseñas no coinciden');
       return false;
     }
     return true;
@@ -70,7 +77,7 @@ export function RegisterScreen({ onBack, onSuccess, onLogin }: RegisterScreenPro
     try {
       const success = await register(formData);
       if (success) {
-        onSuccess();
+        setShowVerificationScreen(true);
       }
     } catch (err: any) {
       const msg = err?.message || 'Error al registrar. Intenta de nuevo.';
@@ -82,6 +89,46 @@ export function RegisterScreen({ onBack, onSuccess, onLogin }: RegisterScreenPro
       setIsLoading(false);
     }
   };
+
+  if (showVerificationScreen) {
+    return (
+      <div className="min-h-screen w-full flex flex-col items-center justify-center px-6 relative">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute -top-20 -right-20 w-64 h-64 bg-pollo-marron/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 -left-20 w-56 h-56 bg-pollo-marron/20 rounded-full blur-3xl" />
+        </div>
+        <div className="relative z-10 text-center max-w-sm mx-auto">
+          <div className="w-20 h-20 mx-auto bg-green-100 rounded-full flex items-center justify-center mb-6 animate-bounce">
+            <MailCheck className="w-10 h-10 text-green-600" />
+          </div>
+          <h1 className="text-2xl font-black text-pollo-marron mb-3">
+            ¡Verificá tu correo!
+          </h1>
+          <p className="text-pollo-marron/70 mb-2">
+            Te enviamos un email de verificación a:
+          </p>
+          <p className="font-bold text-pollo-marron mb-6">
+            {formData.email}
+          </p>
+          <p className="text-sm text-pollo-marron/60 mb-8">
+            Revisá tu bandeja de entrada (y spam) y hacé clic en el enlace para activar tu cuenta.
+          </p>
+          <button
+            onClick={onSuccess}
+            className="w-full btn-primary text-lg py-4"
+          >
+            Entendido, ir al inicio
+          </button>
+          <button
+            onClick={onLogin}
+            className="mt-4 text-pollo-marron/60 hover:text-pollo-marron font-semibold text-sm"
+          >
+            Ir a Iniciar Sesión
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen w-full flex flex-col relative">
@@ -203,6 +250,29 @@ export function RegisterScreen({ onBack, onSuccess, onLogin }: RegisterScreenPro
                     className="right-icon w-5 h-5"
                   >
                     {showPassword ? <EyeOff className="w-5 h-5" strokeWidth={2} /> : <Eye className="w-5 h-5" strokeWidth={2} />}
+                  </button>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label className="block text-sm font-semibold text-pollo-marron">
+                  Confirmar Contraseña
+                </label>
+                <div className="input-with-icon">
+                  <Lock className="input-icon w-5 h-5" strokeWidth={2} />
+                  <input
+                    type={showConfirmPassword ? 'text' : 'password'}
+                    value={confirmPassword}
+                    onChange={(e) => { setConfirmPassword(e.target.value); setError(''); }}
+                    placeholder="Repetí tu contraseña"
+                    className="input-pollo has-right-icon"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    className="right-icon w-5 h-5"
+                  >
+                    {showConfirmPassword ? <EyeOff className="w-5 h-5" strokeWidth={2} /> : <Eye className="w-5 h-5" strokeWidth={2} />}
                   </button>
                 </div>
               </div>
